@@ -57,13 +57,17 @@ public class Appointment {
         try (Session session = factory.openSession()) {
             List<models.Appointment> appointments = session.createQuery("from models.Appointment", models.Appointment.class).list();
             for (models.Appointment appointment : appointments) {
+                String petName = appointment.getPet() != null ? appointment.getPet().getName() : "SIN MASCOTA";
+                int petId = appointment.getPet() != null ? appointment.getPet().getId() : -1;
+                String veterinarianName = appointment.getVeterinarian() != null ? appointment.getVeterinarian().getFullName() : "SIN VETERINARIO";
+                int veterinarianId = appointment.getVeterinarian() != null ? appointment.getVeterinarian().getId() : -1;
                 tableModel.addRow(new Object[]{
                         appointment.getId(),
                         appointment.getDate(),
-                        appointment.getPet().getName(),
-                        appointment.getPet().getId(),
-                        appointment.getVeterinarian().getFullName(),
-                        appointment.getVeterinarian().getId()
+                        petName,
+                        petId,
+                        veterinarianName,
+                        veterinarianId
                 });
             }
         }

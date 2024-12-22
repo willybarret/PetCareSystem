@@ -58,13 +58,17 @@ public class MedicalRecord {
         try (Session session = factory.openSession()) {
             List<models.MedicalRecord> medicalRecords = session.createQuery("from models.MedicalRecord", models.MedicalRecord.class).list();
             for (models.MedicalRecord medicalRecord : medicalRecords) {
+                String petName = medicalRecord.getPet() != null ? medicalRecord.getPet().getName() : "SIN MASCOTA";
+                int petId = medicalRecord.getPet() != null ? medicalRecord.getPet().getId() : -1;
+                String veterinarianName = medicalRecord.getVeterinarian() != null ? medicalRecord.getVeterinarian().getFullName() : "SIN VETERINARIO";
+                int veterinarianId = medicalRecord.getVeterinarian() != null ? medicalRecord.getVeterinarian().getId() : -1;
                 tableModel.addRow(new Object[]{
                         medicalRecord.getId(),
                         medicalRecord.getDate(),
-                        medicalRecord.getPet().getName(),
-                        medicalRecord.getPet().getId(),
-                        medicalRecord.getVeterinarian().getFullName(),
-                        medicalRecord.getVeterinarian().getId(),
+                        petName,
+                        petId,
+                        veterinarianName,
+                        veterinarianId,
                         medicalRecord.getDescription(),
                 });
             }
