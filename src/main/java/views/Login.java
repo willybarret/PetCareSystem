@@ -36,6 +36,8 @@ public class Login {
 
             if (veterinarian != null) {
                 new MainMenu(factory);
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(loginPanel);
+                frame.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
             }
