@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table
 public class Veterinarian extends Person {
-    @Column
+    @Column(unique = true)
     private String username;
     @Column
     private String password;

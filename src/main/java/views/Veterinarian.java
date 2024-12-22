@@ -77,6 +77,16 @@ public class Veterinarian {
         }
 
         try (Session session = factory.openSession()) {
+            List<models.Veterinarian> veterinarians = session.createQuery("from models.Veterinarian where username = :username", models.Veterinarian.class)
+                    .setParameter("username", username)
+                    .list();
+            if (!veterinarians.isEmpty() && (selectedVeterinarianId == null || veterinarians.getFirst().getId() != selectedVeterinarianId)) {
+                JOptionPane.showMessageDialog(null, "Ya existe un veterinario con ese nombre de usuario.");
+                return;
+            }
+        }
+
+        try (Session session = factory.openSession()) {
             session.beginTransaction();
             models.Veterinarian veterinarian;
             if (selectedVeterinarianId == null) {
