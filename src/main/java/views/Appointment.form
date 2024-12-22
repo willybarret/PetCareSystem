@@ -88,13 +88,13 @@
               <text value="Mascota"/>
             </properties>
           </component>
-          <component id="cfed5" class="javax.swing.JComboBox" binding="cbVeterinarian">
+          <component id="cfed5" class="javax.swing.JComboBox" binding="cbPet">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="4cee3" class="javax.swing.JComboBox" binding="cbPet">
+          <component id="4cee3" class="javax.swing.JComboBox" binding="cbVeterinarian">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

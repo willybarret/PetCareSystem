@@ -69,6 +69,12 @@ public class MainMenu {
             frame = new JFrame(title);
             frame.setContentPane(panel);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    openFrames.remove(title);
+                }
+            });
             frame.pack();
             frame.setLocationRelativeTo(null);
             openFrames.put(title, frame);

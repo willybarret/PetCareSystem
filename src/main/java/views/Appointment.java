@@ -19,8 +19,8 @@ public class Appointment {
     private JButton saveButton;
     private JButton cancelButton;
     private JFormattedTextField dateField;
-    private JComboBox<ComboBoxItem> cbPet;
     private JComboBox<ComboBoxItem> cbVeterinarian;
+    private JComboBox<ComboBoxItem> cbPet;
 
     private final DefaultTableModel tableModel;
     private Integer selectedAppointmentId;
@@ -73,7 +73,7 @@ public class Appointment {
         try (Session session = factory.openSession()) {
             List<models.Pet> pets = session.createQuery("from models.Pet", models.Pet.class).list();
             for (models.Pet pet : pets) {
-                cbVeterinarian.addItem(new ComboBoxItem(pet.getId(), pet.getName()));
+                cbPet.addItem(new ComboBoxItem(pet.getId(), pet.getName()));
             }
         }
     }
@@ -82,7 +82,7 @@ public class Appointment {
         try (Session session = factory.openSession()) {
             List<models.Veterinarian> veterinarians = session.createQuery("from models.Veterinarian", models.Veterinarian.class).list();
             for (models.Veterinarian veterinarian : veterinarians) {
-                cbPet.addItem(new ComboBoxItem(veterinarian.getId(), veterinarian.getFullName()));
+                cbVeterinarian.addItem(new ComboBoxItem(veterinarian.getId(), veterinarian.getFullName()));
             }
         }
     }
@@ -95,15 +95,15 @@ public class Appointment {
             datePicker.setSelectedDate(date.toLocalDate());
             int petId = (int) tableModel.getValueAt(selectedRow, 3);
             int veterinarianId = (int) tableModel.getValueAt(selectedRow, 5);
-            for (int i = 0; i < cbVeterinarian.getItemCount(); i++) {
-                if (cbVeterinarian.getItemAt(i).getId() == petId) {
-                    cbVeterinarian.setSelectedIndex(i);
+            for (int i = 0; i < cbPet.getItemCount(); i++) {
+                if (cbPet.getItemAt(i).getId() == petId) {
+                    cbPet.setSelectedIndex(i);
                     break;
                 }
             }
-            for (int i = 0; i < cbPet.getItemCount(); i++) {
-                if (cbPet.getItemAt(i).getId() == veterinarianId) {
-                    cbPet.setSelectedIndex(i);
+            for (int i = 0; i < cbVeterinarian.getItemCount(); i++) {
+                if (cbVeterinarian.getItemAt(i).getId() == veterinarianId) {
+                    cbVeterinarian.setSelectedIndex(i);
                     break;
                 }
             }
@@ -113,8 +113,8 @@ public class Appointment {
     private void saveAppointment() {
         Date date = Date.valueOf(datePicker.getSelectedDate());
         // String details = detailsField.getText();
-        int petId = cbVeterinarian.getItemAt(cbVeterinarian.getSelectedIndex()).getId();
-        int veterinarianId = cbPet.getItemAt(cbPet.getSelectedIndex()).getId();
+        int petId = cbPet.getItemAt(cbPet.getSelectedIndex()).getId();
+        int veterinarianId = cbVeterinarian.getItemAt(cbVeterinarian.getSelectedIndex()).getId();
 
         try (Session session = factory.openSession()) {
             session.beginTransaction();
@@ -181,8 +181,8 @@ public class Appointment {
     private void clearFields() {
         datePicker.setSelectedDate(LocalDate.now());
         // detailsField.setText("");
-        cbVeterinarian.setSelectedIndex(0);
         cbPet.setSelectedIndex(0);
+        cbVeterinarian.setSelectedIndex(0);
         selectedAppointmentId = null;
 
         appointmentsTable.clearSelection();
