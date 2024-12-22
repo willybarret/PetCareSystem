@@ -23,7 +23,7 @@ public class Login {
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (username.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor, completá todos los campos.");
             return;
         }
