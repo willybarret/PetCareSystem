@@ -51,7 +51,9 @@ public class Pet {
         try (Session session = factory.openSession()) {
             List<models.Pet> pets = session.createQuery("from models.Pet", models.Pet.class).list();
             for (models.Pet pet : pets) {
-                tableModel.addRow(new Object[]{pet.getId(), pet.getName(), pet.getBreed(), pet.getAge(), pet.getOwner().getFullName(), pet.getOwner().getId()});
+                String ownerName = pet.getOwner() != null ? pet.getOwner().getFullName() : "SIN DUEÑO";
+                int ownerId = pet.getOwner() != null ? pet.getOwner().getId() : -1;
+                tableModel.addRow(new Object[]{pet.getId(), pet.getName(), pet.getBreed(), pet.getAge(), ownerName, ownerId});
             }
         }
     }
