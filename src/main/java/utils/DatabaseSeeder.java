@@ -19,6 +19,8 @@ public class DatabaseSeeder {
                 admin = new Veterinarian();
                 admin.setUsername("admin");
                 admin.setPassword("admin");
+                admin.setFullName("administrador");
+                admin.setPhoneNumber("777");
                 session.persist(admin);
             }
 
