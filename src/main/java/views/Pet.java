@@ -118,7 +118,7 @@ public class Pet {
                 pet.setAge(age);
                 pet.setOwner(owner);
                 session.persist(pet);
-                tableModel.addRow(new Object[]{pet.getId(), pet.getName(), pet.getBreed(), pet.getAge()});
+                tableModel.addRow(new Object[]{pet.getId(), pet.getName(), pet.getBreed(), pet.getAge(), pet.getOwner().getFullName(), pet.getOwner().getId()});
             } else {
                 pet = session.get(models.Pet.class, selectedPetId);
                 pet.setName(name);
