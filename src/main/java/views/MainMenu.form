@@ -32,7 +32,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="Colección de mascotas"/>
+          <text value="Mascotas"/>
         </properties>
       </component>
       <component id="6cb60" class="javax.swing.JButton" binding="ownersButton" default-binding="true">
