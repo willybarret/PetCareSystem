@@ -35,15 +35,7 @@ public class Login {
             models.Veterinarian veterinarian = query.uniqueResult();
 
             if (veterinarian != null) {
-                JFrame frame = new JFrame("Menú principal");
-                frame.setContentPane(new MainMenu(factory).getPanel());
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-
-                JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(loginPanel);
-                loginFrame.dispose();
+                new MainMenu(factory);
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
             }
