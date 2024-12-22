@@ -16,8 +16,8 @@ public class MainMenu {
     private final Map<String, JFrame> openFrames = new HashMap<>();
 
     private static final String APPOINTMENTS_BUTTON = "Gestión de citas";
-    private static final String MEDICAL_RECORDS_BUTTON = "Registros médicos";
-    private static final String PETS_BUTTON = "Colección de mascotas";
+    private static final String MEDICAL_RECORDS_BUTTON = "Historial médico";
+    private static final String PETS_BUTTON = "Mascotas";
     private static final String OWNERS_BUTTON = "Propietarios";
     private static final String VETERINARIANS_BUTTON = "Veterinarios";
 
@@ -28,7 +28,7 @@ public class MainMenu {
         ownersButton.addActionListener(_ -> createAndShowFrame(OWNERS_BUTTON, new Person(factory).getPanel()));
         veterinariansButton.addActionListener(_ -> createAndShowFrame(VETERINARIANS_BUTTON, new Veterinarian(factory).getPanel()));
 
-        JMenu menu1 = new JMenu("Menu 1");
+        JMenu menu1 = new JMenu("Gestión");
         JMenuItem appointmentsMenuItem = new JMenuItem(APPOINTMENTS_BUTTON);
         appointmentsMenuItem.addActionListener(_ -> createAndShowFrame(APPOINTMENTS_BUTTON, new Appointment(factory).getPanel()));
         menu1.add(appointmentsMenuItem);
@@ -37,7 +37,7 @@ public class MainMenu {
         medicalRecordsMenuItem.addActionListener(_ -> createAndShowFrame(MEDICAL_RECORDS_BUTTON, new MedicalRecord(factory).getPanel()));
         menu1.add(medicalRecordsMenuItem);
 
-        JMenu menu2 = new JMenu("Menu 2");
+        JMenu menu2 = new JMenu("Registros");
         JMenuItem petsMenuItem = new JMenuItem(PETS_BUTTON);
         petsMenuItem.addActionListener(_ -> createAndShowFrame(PETS_BUTTON, new Pet(factory).getPanel()));
         menu2.add(petsMenuItem);
