@@ -22,6 +22,12 @@ public class MainMenu {
     private static final String VETERINARIANS_BUTTON = "Veterinarios";
 
     public MainMenu(SessionFactory factory) {
+        appointmentsButton.addActionListener(_ -> createAndShowFrame(APPOINTMENTS_BUTTON, new Appointment(factory).getPanel()));
+        medicalRecordsButton.addActionListener(_ -> createAndShowFrame(MEDICAL_RECORDS_BUTTON, new MedicalRecord(factory).getPanel()));
+        petsButton.addActionListener(_ -> createAndShowFrame(PETS_BUTTON, new Pet(factory).getPanel()));
+        ownersButton.addActionListener(_ -> createAndShowFrame(OWNERS_BUTTON, new Person(factory).getPanel()));
+        veterinariansButton.addActionListener(_ -> createAndShowFrame(VETERINARIANS_BUTTON, new Veterinarian(factory).getPanel()));
+
         JMenu menu1 = new JMenu("Menu 1");
         JMenuItem appointmentsMenuItem = new JMenuItem(APPOINTMENTS_BUTTON);
         appointmentsMenuItem.addActionListener(_ -> createAndShowFrame(APPOINTMENTS_BUTTON, new Appointment(factory).getPanel()));
