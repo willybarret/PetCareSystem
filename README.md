@@ -5,7 +5,7 @@ PetCare System es una aplicación para gestionar citas veterinarias, registros m
 
 ## Instrucciones de uso
 1. Cloná el repositorio.
-2. Abrí el proyecto en IntelliJ IDEA y actualizá las dependencias de Maven.
+2. Abrí el proyecto en IntelliJ IDEA y actualizá las dependencias con Maven.
 3. Configurá la conexión a la base de datos en `hibernate.cfg.xml`.
 4. Ejecutá la clase `Main` para iniciar la aplicación.
 
@@ -30,8 +30,10 @@ PetCare System es una aplicación para gestionar citas veterinarias, registros m
 
 ## Tecnologías utilizadas
 - Java
-- Hibernate
 - Maven
 - Swing (para la interfaz gráfica)
-- SQLite JDBC
+- Hibernate
+- MySQL 8.0.33
+
+
 

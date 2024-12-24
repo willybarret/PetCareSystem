@@ -10,8 +10,7 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
-                //.configure("hibernate.cfg.xml") // para SQLite
-                .configure("hibernate.mysql.cfg.xml")
+                .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Person.class)
                 .addAnnotatedClass(Veterinarian.class)
                 .addAnnotatedClass(Pet.class)
